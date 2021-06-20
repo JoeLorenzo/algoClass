@@ -54,19 +54,30 @@ function Queue(capacity) {
   // adds a capacity property
   this.capacity = capacity;
   // enumerate items added to queue
-  this.itemNumber = 0;
+  this.itemOrder = 0;
+  // tracks the oldest item number
+  this.oldestItem = 1;
   // initalize an empty object where queue items will go
   this.items = {};
 }
 
 Queue.prototype.enqueue = function (value) {
-  this.items[`${(this.itemNumber += 1)}`] = value;
+  this.items[`${(this.itemOrder += 1)}`] = value;
   // return console.log(this.items);
 };
 // Time complexity:
 
 Queue.prototype.dequeue = function () {
-  // implement me...
+  let oldestItemValue = "";
+  // Get the value of the oldest item
+  oldestItemValue = this.items[`${this.oldestItem}`];
+  // delete the item property that will be dequeued
+  delete this.items[`${this.oldestItem}`];
+  // increment the value of the oldest item
+  this.oldestItem += 1;
+  // console.log(this.items);
+  // return the value of the value being dequeued
+  console.log(`${oldestItemValue}, has been dequeued`);
 };
 // Time complexity:
 
@@ -81,6 +92,10 @@ Queue.prototype.count = function () {
 const test = new Queue();
 test.enqueue("Hello");
 test.enqueue("World");
+test.enqueue("@@@@@");
+test.dequeue();
+test.enqueue("!!!!!");
+test.dequeue();
 
 /*
 *** Exercises:
