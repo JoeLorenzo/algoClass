@@ -51,29 +51,36 @@ What's the time complexity?
  */
 
 function Queue(capacity) {
-  // implement me...
+  // adds a capacity property
+  this.capacity = capacity;
+  // enumerate items added to queue
+  this.itemNumber = 0;
+  // initalize an empty object where queue items will go
+  this.items = {};
 }
 
-Queue.prototype.enqueue = function(value) {
+Queue.prototype.enqueue = function (value) {
+  this.items[`${(this.itemNumber += 1)}`] = value;
+  // return console.log(this.items);
+};
+// Time complexity:
+
+Queue.prototype.dequeue = function () {
   // implement me...
 };
 // Time complexity:
 
-Queue.prototype.dequeue = function() {
+Queue.prototype.peek = function () {
+  // implement me...
+};
+
+Queue.prototype.count = function () {
   // implement me...
 };
 // Time complexity:
-
-Queue.prototype.peek = function() {
-  // implement me...
-};
-
-Queue.prototype.count = function() {
-  // implement me...
-};
-// Time complexity:
-
-
+const test = new Queue();
+test.enqueue("Hello");
+test.enqueue("World");
 
 /*
 *** Exercises:
